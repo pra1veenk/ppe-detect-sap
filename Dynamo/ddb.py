@@ -1,10 +1,10 @@
 from aws_cdk import ( 
-    core,
+    RemovalPolicy,
     aws_dynamodb as ddb
 )
-
-class ddbConstruct(core.Construct):
-    def __init__(self, scope: core.Construct, id: str,props, **kwargs) -> None:
+from constructs import Construct
+class ddbConstruct(Construct):
+    def __init__(self, scope: Construct, id: str,props, **kwargs) -> None:
         super().__init__(scope, id, **kwargs)
 
         self._ddb = ddb.Table(self,'configdb', 
@@ -13,7 +13,7 @@ class ddbConstruct(core.Construct):
                                                    type=ddb.AttributeType.STRING),
                                     sort_key=ddb.Attribute(name='equipment', 
                                              type=ddb.AttributeType.STRING),
-                                    removal_policy=core.RemovalPolicy.DESTROY )
+                                    removal_policy=RemovalPolicy.DESTROY )
     
 
         

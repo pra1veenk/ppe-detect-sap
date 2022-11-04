@@ -4,6 +4,17 @@ Amazon Lookout for Vision provides the ability to scale computer vision-based qu
 ## Architecture
 ![architecture](/aws-lookoutvision-sap-integration.png)
 
+
+## SAP BTP integration pattern
+If the SAP ECC or S/4 HANA system is an API provider to BTP, please use the below architecture. The architecture uses an APIKey for authentication. The preflow policy contains snippets from here to pass the provider credentials and xcsrf token to the consumer.
+![architecture](/l4v.png)
+
+The API proxy and policy steps are taken from the [SAP documentation](https://blogs.sap.com/2020/08/10/consuming-sap-on-premise-data-through-sap-api-management/) to pass the APIKey and XCSRF token.  
+![API product](/APIProduct.png)
+![API](/API.png)
+![API](/APIPolicy.png)
+
+
 This project is intended to be sample code only. Not for use in production.
 
 This project will create the following in your AWS cloud environment specified:
@@ -66,8 +77,8 @@ The `appConfig.json` file takes the input paramters for the stack. Maintain the 
 * `plant` Enter the SAP Plant ID where the product is being assembled or manufactured, this information will be logically mapped to the bucket as folders.
 * `material` Product# that is being assembled in the assembly/manufactured for which inspection is performed, enter the SAP material ID and this will be logically mapped to the bucket as folders
 ## SAP Environnment details
-* `SAP_AUTH_SECRET` Provide the arn where the credentials with keys `user` and `password` for accessing SAP services.
-* `SAP_HOST_NAME` Host name of the instance for accessing the SAP OData service e.g. hostname of load balancer/Web Dispatcher/SAP Gateway
+* `SAP_AUTH_SECRET` Provide the arn where the credentials with keys `user` and `password` or `APIkey` if using SAP BTP  for accessing SAP services.
+* `SAP_HOST_NAME` Host name of the instance for accessing the SAP OData service e.g. hostname of load balancer/Web Dispatcher/SAP Gateway. If using BTP, please pass host alias
 * `SAP_PORT` provide the port on which the SAP service can be accesed e.g 443/50001
 * `SAP_PROTOCOL` Enter protocol ushing which the service will be accessed HTTPS/HTTP 
 

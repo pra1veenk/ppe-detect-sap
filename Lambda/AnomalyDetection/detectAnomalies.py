@@ -23,6 +23,11 @@ ddb = boto3.resource('dynamodb')
 sapauth={}
 
 #constants
+#Replace the below variables with the API endpoint if using SAP BTP
+#for eg if the API URL is https://359600betrial-trial.integrationsuitetrial-apim.us10.hana.ondemand.com:443/359600betrial/API_DEFECT_SRV
+#DEFECT_SERVICE = /359600betrial/API_DEFECT_SRV
+#ATTACHMENT_SERVICE = /359600betrial/API_CV_ATTACHMENT_SRV
+
 DEFECT_SERVICE='/sap/opu/odata/sap/API_DEFECT_SRV'
 DEFECT_SERVICE_PATH='/sap/opu/odata/sap/ZAPI_QUAL_NOTIFICATION_SRV'
 ATTACHMENT_SERVICE='/sap/opu/odata/sap/API_CV_ATTACHMENT_SRV'
@@ -143,6 +148,9 @@ def _getattachmentClient(service,**kwargs):
     response = session.head(serviceuri, headers={'x-csrf-token': 'fetch'})
     token = response.headers.get('x-csrf-token', '')
     session.headers.update({'x-csrf-token': token})
+    #if using SAP API management then please pass the APIKey and other header parameters if applicable
+    # session.headers.update({'APIKey': sapauth['APIKey']})
+        
 
    
     session.headers.update({'LinkedSAPObjectKey': kwargs.get('defectid')})
@@ -244,12 +252,15 @@ def getODataClient(service,**kwargs):
 
         sapauth = json.loads(authresponse['SecretString'])
         
-       #Set session headers - Auth,token etc
+       #Set session headers - Auth,token,APIKey etc
         session = requests.Session()
         session.auth = (sapauth['user'],sapauth['password'])
         response = session.head(serviceuri, headers={'x-csrf-token': 'fetch'})
         token = response.headers.get('x-csrf-token', '')
         session.headers.update({'x-csrf-token': token})
+        #if using SAP API management then please pass the APIKey and other header parameters if applicable
+        # session.headers.update({'APIKey': sapauth['APIKey']})
+        
 
         if 'defectid' in kwargs:
             session.headers.update({'LinkedSAPObjectKey': kwargs.get('defectid')})

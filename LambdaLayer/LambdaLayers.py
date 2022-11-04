@@ -1,6 +1,8 @@
 from aws_cdk import ( 
-    core,
     aws_lambda as _lambda,
+    App,
+    Stack,
+    Duration
 )
 # from aws_cdk.aws_lambda_python import(
 #     PythonLayerVersion
@@ -8,10 +10,11 @@ from aws_cdk import (
 import os
 from   os import path
 import subprocess
+from constructs import Construct
 
-class LambdaLayers(core.Construct):
+class LambdaLayers(Construct):
 
-    def __init__(self, scope: core.Construct, id: str, **kwargs) -> None:
+    def __init__(self, scope: Construct, id: str, **kwargs) -> None:
         super().__init__(scope, id, **kwargs)
 
         #aws_lambda_python PythonLayerVersion requires docker 

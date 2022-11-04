@@ -1,10 +1,10 @@
 {
     "env": {
-        "account": "999999999",
+        "account": "306804516433",
         "region": "us-east-1"
     },
-    "vpcId": "vpc-9999999999",
-    "subnet": "subnet-099999999",
+    "vpcId": "vpc-02c1e538061336e94",
+    "subnet": "subnet-0363c5f133b33428a",
     "stackName": "lookoutvision",
     "sapenv": {
         "SAP_AUTH_SECRET": "arn:aws:secretsmanager:us-east-1:9999999999:secret:saps4auth-rw0Ngw",
@@ -14,7 +14,7 @@
     },
     "ddbtablename": "configl4v",
     "s3":{
-    "bucketname": "lookoutvision-l4v",
+    "bucketname": "lookoutvision-l4v-xxudh",
     "equipment": "CAM-01",
     "material": "CB-FL-001",
     "plant": "1710"

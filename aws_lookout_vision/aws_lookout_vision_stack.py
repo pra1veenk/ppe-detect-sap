@@ -1,9 +1,11 @@
 from aws_cdk import ( 
-    core,
     aws_ec2 as ec2,
     aws_s3 as s3,
+    Stack,
+    RemovalPolicy,
 )
 # import constructs
+from constructs import Construct
 from LambdaLayer.LambdaLayers import LambdaLayers
 from Lambda.Lambda import LambdaConstruct
 from Roles.roles import rolesConstruct
@@ -16,9 +18,9 @@ from CustomResource.custom import customResourceConstruct
 #     PythonLayerVersion
 #     PythonFunction
 # )
-class AwsLookoutVisionStack(core.Stack):
+class AwsLookoutVisionStack(Stack):
 
-    def __init__(self, scope: core.Construct, id: str, **kwargs) -> None:
+    def __init__(self, scope: Construct, id: str, **kwargs) -> None:
         super().__init__(scope, id, **kwargs)
          
         #Configuration parameters for CDK from 'appConfig.json'
@@ -27,7 +29,7 @@ class AwsLookoutVisionStack(core.Stack):
         #1.VPC
         vpc = ec2.Vpc.from_lookup(self,"VPC",vpc_id=appConfig.vpc)
          
-        privateSubnets = vpc.select_subnets(subnet_type=ec2.SubnetType.PRIVATE)
+        privateSubnets = vpc.select_subnets(subnet_type=ec2.SubnetType.PRIVATE_WITH_NAT)
 
         lamdbasubnet=[]
 
@@ -49,7 +51,7 @@ class AwsLookoutVisionStack(core.Stack):
 
         #5.S3 Bucket
         pocbucket = s3.Bucket(self,'l4vbucket',
-        bucket_name=appConfig.bucketname,removal_policy=core.RemovalPolicy.DESTROY)
+        bucket_name=appConfig.bucketname,removal_policy=RemovalPolicy.DESTROY)
 
         #6. Create Custom Resources
         _folder = appConfig.equipment+'/'+appConfig.plant+'/'+appConfig.material

@@ -1,16 +1,20 @@
 from aws_cdk import(
-core,
 aws_lambda as _lambda,
 aws_logs as _logs,
 aws_ec2 as ec2,
 custom_resources as cr,
+App,
+Stack,
+Duration,
+CustomResource,
 )
+from constructs import Construct
 
 import os 
 from   os import path
 
-class customResourceConstruct(core.Construct):
-    def __init__(self, scope: core.Construct, id: str, props, **kwargs) -> None:
+class customResourceConstruct(Construct):
+    def __init__(self, scope: Construct, id: str, props, **kwargs) -> None:
         super().__init__(scope, id,**kwargs)
 
         __dirname = (os.path.dirname(__file__))
@@ -26,7 +30,7 @@ class customResourceConstruct(core.Construct):
                 "BUCKET_NAME": props['config'].bucketname,
                 "FOLDER_NAME": props['folder']},
         memory_size=2048,
-        timeout=core.Duration.seconds(props['config'].timeout),
+        timeout=Duration.seconds(props['config'].timeout),
         role=props['role']
         )
 
@@ -35,7 +39,7 @@ class customResourceConstruct(core.Construct):
         log_retention=_logs.RetentionDays.ONE_DAY)
 
 
-        self.s3CustomResource = core.CustomResource(self, 's3CustomResource',
+        self.s3CustomResource = CustomResource(self, 's3CustomResource',
         service_token=self.s3CustomResourceProvider.service_token
         )
 

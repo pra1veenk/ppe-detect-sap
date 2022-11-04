@@ -1,10 +1,11 @@
 from aws_cdk import(
-    core,
+   
     aws_iam as iam
 )
+from constructs import Construct
 
-class rolesConstruct(core.Construct):
-    def __init__(self, scope: core.Construct, id:str) -> None:
+class rolesConstruct(Construct):
+    def __init__(self, scope: Construct, id:str) -> None:
         super().__init__(scope, id)
         
         self._lambdarole = iam.Role(self,'l4vsuperrole',
