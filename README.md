@@ -1,13 +1,13 @@
 ## Integrating Amazon Rekogntion - PPE detection and SAP Environment, health and Safety - Sustainability
 Safety hazards can exist in every workplace in many different forms: sharp edges, falling objects, flying sparks, chemicals, noise, and other potentially dangerous situations. Safety regulators such as Occupational Safety and Health Administration (OSHA) and European Commission often require that businesses protect their employees and customers from hazards that can cause injury by providing them personal protective equipment (PPE) and ensuring their use.With Amazon Rekognition PPE detection, customers can analyze images from their on-premises cameras across all locations to automatically detect if persons in the images are wearing the required PPE such as face covers, hand covers, and head covers. SAP customers use SAP Environment health and safety module to record these detections manually as safety observations.This solution provides an integration framework between Amazon Rekogntion and SAP Envriroment, Health and Safety(EHS).
 ## Architecture
-![architecture](/p4s.PNG)
+![architecture](/p4s.png)
 
 
 ## SAP BTP integration pattern
  The architecture uses an APIKey for authentication. The preflow policy contains snippets from here to pass the provider credentials and xcsrf token to the consumer.
 The API proxy and policy steps are taken from the [SAP documentation](https://blogs.sap.com/2020/08/10/consuming-sap-on-premise-data-through-sap-api-management/) to pass the APIKey and XCSRF token.  
-![API product](/APIProduct.png)
+![API product](/APIproduct.png)
 ![API](/API.png)
 ![API](/APIPolicy.png)
 
@@ -72,7 +72,7 @@ The `appConfig.json` file takes the input paramters for the stack. Maintain the 
 * `SAP_HOST_NAME` Host name of the instance for accessing the SAP OData service e.g. hostname of load balancer/Web Dispatcher/SAP Gateway. If using BTP, please pass host alias
 * `SAP_PORT` provide the port on which the SAP service can be accesed e.g 443/50001
 * `SAP_PROTOCOL` Enter protocol ushing which the service will be accessed HTTPS/HTTP 
-
+* `SAP_AUTH_SECRET` Enter ARN of secrets manager holding the APIKey. 
 
 Bootstrap your AWS account for CDK. Please check [here](https://docs.aws.amazon.com/cdk/latest/guide/tools.html) for more details on bootstraping for CDK. Bootstraping deploys a CDK toolkit stack to your account and creates a S3 bucket for storing various artifacts. You incur any charges for what the AWS CDK stores in the bucket. Because the AWS CDK does not remove any objects from the bucket, the bucket can accumulate objects as you use the AWS CDK. You can get rid of the bucket by deleting the CDKToolkit stack from your account.
 
