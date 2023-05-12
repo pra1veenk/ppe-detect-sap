@@ -9,9 +9,9 @@ class ddbConstruct(Construct):
 
         self._ddb = ddb.Table(self,'configdb', 
                                     table_name=props['config'].ddbtable,
-                                    partition_key=ddb.Attribute(name='notiftype', 
+                                    partition_key=ddb.Attribute(name='location', 
                                                    type=ddb.AttributeType.STRING),
-                                    sort_key=ddb.Attribute(name='equipment', 
+                                    sort_key=ddb.Attribute(name='camera', 
                                              type=ddb.AttributeType.STRING),
                                     removal_policy=RemovalPolicy.DESTROY )
     

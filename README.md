@@ -1,14 +1,11 @@
-## Integrating Amazon Lookout for Vision and SAP QM 
-Amazon Lookout for Vision provides the ability to scale computer vision-based quality inspection at a lower total cost in order to reduce inspection variation and improve quality yields. However, the output of machine learning in industrial operations only provides valuable results if action is taken on the machine learning insights. To reduce the burden of change management and ensure action is taken on the Lookout for Vision insights, this sample project has demonstrated how to automatically record the Lookout for Vision defects in SAP QM.
-
+## Integrating Amazon Rekogntion - PPE detection and SAP Environment, health and Safety - Sustainability
+Safety hazards can exist in every workplace in many different forms: sharp edges, falling objects, flying sparks, chemicals, noise, and other potentially dangerous situations. Safety regulators such as Occupational Safety and Health Administration (OSHA) and European Commission often require that businesses protect their employees and customers from hazards that can cause injury by providing them personal protective equipment (PPE) and ensuring their use.With Amazon Rekognition PPE detection, customers can analyze images from their on-premises cameras across all locations to automatically detect if persons in the images are wearing the required PPE such as face covers, hand covers, and head covers. SAP customers use SAP Environment health and safety module to record these detections manually as safety observations.This solution provides an integration framework between Amazon Rekogntion and SAP Envriroment, Health and Safety(EHS).
 ## Architecture
-![architecture](/aws-lookoutvision-sap-integration.png)
+![architecture](/p4s.PNG)
 
 
 ## SAP BTP integration pattern
-If the SAP ECC or S/4 HANA system is an API provider to BTP, please use the below architecture. The architecture uses an APIKey for authentication. The preflow policy contains snippets from here to pass the provider credentials and xcsrf token to the consumer.
-![architecture](/l4v.png)
-
+ The architecture uses an APIKey for authentication. The preflow policy contains snippets from here to pass the provider credentials and xcsrf token to the consumer.
 The API proxy and policy steps are taken from the [SAP documentation](https://blogs.sap.com/2020/08/10/consuming-sap-on-premise-data-through-sap-api-management/) to pass the APIKey and XCSRF token.  
 ![API product](/APIProduct.png)
 ![API](/API.png)
@@ -34,9 +31,9 @@ This project is set up like a standard Python project.  For an integrated develo
 2.  Clone the github repository and navigate to the directory.
 
 ```
-$ git clone https://github.com/aws-samples/aws-lookoutforvision-sap-integration.git
+$ git clone https://github.com/ganeesin/ppedetection-ehs
 
-$ cd aws-lookoutforvision-sap-integration
+$ cd ppedetection-ehs
 ```
 
 To manually create a virtualenv 
@@ -67,15 +64,9 @@ The `appConfig.json` file takes the input paramters for the stack. Maintain the 
 * `subnet`  Enter the subnet for Lambda exection
 ## Resource Identifiers
 * `stackname` Enter an Identifier/Name for the CDK stack
-* `ddbtablename` Enter a name for Dynamo DB Table that would be created as part of the stack which would hold the metadata for creating defect notification in SAP
-## Lookout for Vision Project/Model Information
-* `projectname` Enter Look out vision project name that was created using the look out for vision service.
-* `modelversion` Enter Model version of the trained model from look out for vision.
+* `ddbtablename` Enter a name for Dynamo DB Table that would be created as part of the stack which would hold the metadata for creating incidents in SAP
 ## Bucket Structure
-* `bucketname` Enter the name of the bucket to be created where the images will be captured for defect anaysis
-* `equipment` Equipment which captures the image of the product, this information will be logically mapped to the bucket as folders
-* `plant` Enter the SAP Plant ID where the product is being assembled or manufactured, this information will be logically mapped to the bucket as folders.
-* `material` Product# that is being assembled in the assembly/manufactured for which inspection is performed, enter the SAP material ID and this will be logically mapped to the bucket as folders
+* `bucketname` Enter the name of the bucket to be created where the images will be captured for analysis
 ## SAP Environnment details
 * `SAP_AUTH_SECRET` Provide the arn where the credentials with keys `user` and `password` or `APIkey` if using SAP BTP  for accessing SAP services.
 * `SAP_HOST_NAME` Host name of the instance for accessing the SAP OData service e.g. hostname of load balancer/Web Dispatcher/SAP Gateway. If using BTP, please pass host alias

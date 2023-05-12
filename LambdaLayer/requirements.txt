@@ -1,3 +1,4 @@
 pillow 
-pyodata
-requests
+pyodata==1.5.0
+requests==2.22.0
+urllib3<2

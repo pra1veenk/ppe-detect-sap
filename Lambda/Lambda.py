@@ -38,9 +38,8 @@ class LambdaConstruct(Construct):
                 "SAP_HOST_NAME": props['config'].saphost,
                 "SAP_PROTOCOL": props['config'].sapprotocol,
                 "SAP_PORT": props['config'].sapport,
-                "PROJECT_NAME": props['config'].projectname,
                 "DDB_CONFIG_TABLE": props['config'].ddbtable,
-                "MODEL_VERSION": props['config'].modelversion,
+                
             },
             vpc=props['vpc'],
             vpc_subnets=ec2.SubnetSelection(subnets=props['subnet']),
