@@ -10,7 +10,6 @@ from LambdaLayer.LambdaLayers import LambdaLayers
 from Lambda.Lambda import LambdaConstruct
 from Roles.roles import rolesConstruct
 from AppConfig.config import Config
-from Dynamo.ddb import ddbConstruct
 from CustomResource.custom import customResourceConstruct
 
 # Requires docker
@@ -42,12 +41,6 @@ class AwsPpeEhsStack(Stack):
         
         #3.Roles
         p4srole = rolesConstruct(self, 'p4srole')
-
-        #4.DDB
-        ddbConstruct(self, 'qmconfigddb',props={
-             'config': appConfig,
-             'ddbrole': p4srole._lambdarole
-         } )
 
         #5.S3 Bucket
         pocbucket = s3.Bucket(self,'p4sbucket',

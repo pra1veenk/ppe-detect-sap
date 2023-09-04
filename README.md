@@ -18,7 +18,6 @@ This project will create the following in your AWS cloud environment specified:
 * Lambda Layers
 * Lambda for detecting Anomalies and creating notifications in SAP
 * Roles
-* DynamoDB
 * S3 bucket which will be used as a landing zone for images captured from equipment
 * S3 Notifications
 
@@ -64,7 +63,6 @@ The `appConfig.json` file takes the input paramters for the stack. Maintain the 
 * `subnet`  Enter the subnet for Lambda exection
 ## Resource Identifiers
 * `stackname` Enter an Identifier/Name for the CDK stack
-* `ddbtablename` Enter a name for Dynamo DB Table that would be created as part of the stack which would hold the metadata for creating incidents in SAP
 ## Bucket Structure
 * `bucketname` Enter the name of the bucket to be created where the images will be captured for analysis
 ## SAP Environnment details

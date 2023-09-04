@@ -12,7 +12,6 @@ class Config:
         self.stackname = appConfig['stackName']
         self.sapaemcredential = appConfig['sapenv']['SAP_AEM_CREDENTIALS']
         self.sapaemresturl = appConfig['sapenv']['SAP_AEM_REST_URL']
-        self.ddbtable    = appConfig['ddbtablename']
         #self.projectname = appConfig['lookoutvision']['projectname']
         #self.modelversion = appConfig['lookoutvision']['modelversion']
         self.timeout = appConfig['lambdaTimeout']

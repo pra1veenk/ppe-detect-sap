@@ -36,7 +36,6 @@ class LambdaConstruct(Construct):
             environment={
                 "SAP_AEM_CREDENTIALS": props['config'].sapaemcredential,
                 "SAP_AEM_REST_URL": props['config'].sapaemresturl,
-                "DDB_CONFIG_TABLE": props['config'].ddbtable,
                 "BUCKET": props['config'].bucketname
                 
             },
