@@ -34,11 +34,10 @@ class LambdaConstruct(Construct):
             # props['pillowLayer'],
             # props['requestsLayer']],
             environment={
-                "SAP_AUTH_SECRET": props['config'].sapauth,
-                "SAP_HOST_NAME": props['config'].saphost,
-                "SAP_PROTOCOL": props['config'].sapprotocol,
-                "SAP_PORT": props['config'].sapport,
+                "SAP_AEM_CREDENTIALS": props['config'].sapaemcredential,
+                "SAP_AEM_REST_URL": props['config'].sapaemresturl,
                 "DDB_CONFIG_TABLE": props['config'].ddbtable,
+                "BUCKET": props['config'].bucketname
                 
             },
             vpc=props['vpc'],
