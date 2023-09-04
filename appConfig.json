@@ -1,23 +1,21 @@
 {
     "env": {
-        "account": "306804516433",
-        "region": "us-east-1"
+        "account": "782110148236",
+        "region": "eu-west-1"
     },
-    "vpcId": "vpc-02c1e538061336e94",
-    "subnet": "subnet-0363c5f133b33428a",
-    "stackName": "awssapppe",
+    "vpcId": "vpc-c80dd1b1",
+    "subnet": "subnet-05ab827f9a556a73c",
+    "stackName": "ppetest",
     "sapenv": {
-        "SAP_AUTH_SECRET": "arn:aws:secretsmanager:us-east-1:9999999999:secret:saps4auth-rw0Ngw",
-        "SAP_HOST_NAME": "saponwas.aws.dev",
-        "SAP_PORT": "443",
-        "SAP_PROTOCOL": "https"
+        "SAP_AEM_CREDENTIALS":"arn:aws:secretsmanager:eu-west-1:782110148236:secret:sapaem-credentials-iNmFXa",
+        "SAP_AEM_REST_URL": "https://mr-connection-giuyy7qx0z1.messaging.solace.cloud:9443/monitron/messages"
     },
     "ddbtablename": "configp4s",
     "s3":{
-    "bucketname": "awssapppe-p4s-xxudh",
-    "camera": "CAM-01",
-    "location": "CB-FL-001",
-    "plant": "1710"
+        "bucketname": "awssapppe-p4s",
+        "camera": "CAM-01",
+        "location": "CB-FL-001",
+        "plant": "1710"
     },
     "lambdaTimeout": 900
 }

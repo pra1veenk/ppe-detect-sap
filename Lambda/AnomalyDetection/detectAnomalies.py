@@ -12,8 +12,8 @@ from PIL import Image
 import base64
 from datetime import datetime, tzinfo,timezone,timedelta
 
-from boto3.dynamodb.conditions import Key
-from boto3.dynamodb.conditions import Attr
+#from boto3.dynamodb.conditions import Key
+#from boto3.dynamodb.conditions import Attr
 
 #clients
 s3       = boto3.client('s3')
@@ -79,76 +79,68 @@ def detectIncident(image_bytes, image_type,key,imgbin):
          createIncident(image_bytes,image_type,key,imgbin)
          
 def createIncident(image, image_type, key,imgbin):
-    IncidentNotification =  getODataClient(INCIDENT_SERVICE)
-    #equipment,plant,material,object = key.split('/')
-    # if you have any location or other attributed to map, this is optional   
-    # ddbConfigTable = ddb.Table(os.environ.get('DDB_CONFIG_TABLE'))
+    try: 
+        #IncidentNotification =  getODataClient(INCIDENT_SERVICE)
+        #equipment,plant,material,object = key.split('/')
+        # if you have any location or other attributed to map, this is optional   
+        # ddbConfigTable = ddb.Table(os.environ.get('DDB_CONFIG_TABLE'))
 
-   # response = ddbConfigTable.query(
-     #   KeyConditionExpression=Key('notiftype').eq('06') & Key('equipment').eq(equipment),
-      #  FilterExpression=Attr('plant').eq(plant) & Attr('material').eq(material)
-    #)
+    # response = ddbConfigTable.query(
+        #   KeyConditionExpression=Key('notiftype').eq('06') & Key('equipment').eq(equipment),
+        #  FilterExpression=Attr('plant').eq(plant) & Attr('material').eq(material)
+        #)
 
-    #configItem = response['Items']
-    
-    incidendate = datetime.utcnow().isoformat()[:-7]+'Z'
-    print("date is"+incidendate)
-    payload = {
+        #configItem = response['Items']
+
+        notif_data = {'data':{}}
+        notif_data['data']['SourceSystem']=filedata['projectDisplayName']
+        notif_data['data']['DeviceLocation']=filedata['siteDisplayName']
+        notif_data['data']['DeviceType']=filedata['assetDisplayName']
+        notif_data['data']['BUCKETId']=bucket
         
-    }
-    #payload["IncidentUTCDateTime"] = datetime.utcnow().isoformat()[:-7]+'Z'
-    payload["IncidentCategory"] = "003"
-    payload["IncidentTitle"] = "Hello, From Pyodata"
-    payload["IncidentUTCDateTime"]=incidendate
-    print(payload["IncidentUTCDateTime"])
-    create_request = IncidentNotification.entity_sets.A_Incident.create_entity()
-    create_request.set(**payload)
-    Incident = create_request.execute()
+        incidendate = datetime.utcnow().isoformat()[:-7]+'Z'
+        print("date is"+incidendate)
+        payload = {
+            
+        }
+        #payload["IncidentUTCDateTime"] = datetime.utcnow().isoformat()[:-7]+'Z'
+        payload["IncidentCategory"] = "003"
+        payload["IncidentTitle"] = "Hello, From Pyodata"
+        payload["IncidentUTCDateTime"]=incidendate
+        print(payload["IncidentUTCDateTime"])
+        notif_data['data']['eventData']=payload
+        #fetch oauth token for SAP Event Mesh
+        
+        #Send event to SAP Advanced Event Mesh
+        api_call_headers = {
+            'Authorization': get_aem_credentials(),
+            'Content-Type': 'application/json'
+        }
 
-    print('SAP Incident number:'+Incident.IncidentUUID)
-    
+        aem_rest_url = os.environ.get('SAP_AEM_REST_URL')
+        api_call_response = requests.post(aem_rest_url, data=json.dumps(notif_data), headers=api_call_headers, verify=False)
+        print("api_call_headers",api_call_headers)
+        print("Successfuly sent event to BTP")
+    except Exception as e:
+        traceback.print_exc()
+        return e
+    #print('SAP Incident number:'+Incident.IncidentUUID)
 
-    attachResponse = createAttachment(key,Incident.IncidentUUID,image_type,imgbin)
+def get_aem_credentials():
+    #Secret Manager
+    aem_credentials_secret = smclient.get_secret_value(
+        SecretId=os.environ.get('SAP_AEM_CREDENTIALS')    
+    )
     
-def createAttachment(object,id,image_type,imgbin):
-    # Create Attachment
-    attachmentClient = _getattachmentClient(INCIDENT_SERVICE,
-    slug=object,
-    Incidentid=id,
-    type=image_type)
+    aem_secret_string = json.loads(aem_credentials_secret['SecretString'])
+    aem_username = aem_secret_string['username']
+    aem_password = aem_secret_string['password']
 
-    attachmentEntity = attachmentClient['uri']+"/A_Incident(guid" + "\'"+ str(id) + "\'"+ ")/to_Attachments"
-    resp = attachmentClient['session'].post(attachmentEntity,data=imgbin)
-    print(attachmentEntity)
-    print(resp.text)
-    return(resp.text)
-    
-def _getattachmentClient(service,**kwargs):
+    token = b64.b64encode(f"{aem_username}:{aem_password}".encode('utf-8')).decode("ascii")
 
-    sap_host = os.environ.get('SAP_HOST_NAME')
-    sap_port = os.environ.get('SAP_PORT')
-    sap_proto = os.environ.get('SAP_PROTOCOL')
-    
-    serviceuri = sap_proto + '://' + sap_host + ':' + sap_port + service
-    
-    
-    authresponse = smclient.get_secret_value(
-            SecretId=os.environ.get('SAP_AUTH_SECRET')
-        )
 
-    sapauth = json.loads(authresponse['SecretString'])
-    session = requests.Session()
-    session.headers.update({'APIKey': sapauth['APIKey']})
-    response = session.head(serviceuri, headers={'x-csrf-token': 'fetch'})
-    token = response.headers.get('x-csrf-token', '')
-    session.headers.update({'x-csrf-token': token})
-    
-   
-    session.headers.update({'Content-Type': kwargs.get('type')})
-    session.headers.update({'Slug': kwargs.get('slug')})
+    return f'Basic {token}'
 
-    return{ 'session': session, 'uri': serviceuri }
-    
 def getODataClient(service,**kwargs):
     try:
         sap_host = os.environ.get('SAP_HOST_NAME')
