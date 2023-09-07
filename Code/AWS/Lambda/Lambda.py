@@ -26,7 +26,7 @@ class LambdaConstruct(Construct):
 
         self._function = _lambda.Function(
             self, 'detectAnomalies',
-            runtime=_lambda.Runtime.PYTHON_3_7,
+            runtime=_lambda.Runtime.PYTHON_3_8,
             code=_lambda.Code.from_asset(path.join(__dirname, './AnomalyDetection')),
             handler='detectAnomalies.handler',
             layers=[props['lambdaLayer']], 

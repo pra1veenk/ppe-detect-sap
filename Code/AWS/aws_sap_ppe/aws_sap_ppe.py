@@ -47,7 +47,7 @@ class AwsPpeEhsStack(Stack):
         bucket_name=appConfig.bucketname,removal_policy=RemovalPolicy.DESTROY)
 
         #6. Create Custom Resources
-        _folder = appConfig.equipment+'/'+appConfig.plant+'/'+appConfig.material
+        _folder = appConfig.plant+'/'+appConfig.location+'/'+appConfig.camera
 
         customResourceConstruct(self, 'p4sfolders', props={
             'config': appConfig,

@@ -17,8 +17,8 @@ class Config:
         self.timeout = appConfig['lambdaTimeout']
         self.bucketname = appConfig['s3']['bucketname']
         self.vpc = appConfig['vpcId']
-        self.equipment=appConfig['s3']['location']
-        self.material=appConfig['s3']['camera']
+        self.location=appConfig['s3']['location']
+        self.camera=appConfig['s3']['camera']
         self.plant=appConfig['s3']['plant']
         self.subnet=appConfig['subnet']
 

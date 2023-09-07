@@ -6,10 +6,8 @@ import urllib.parse
 import boto3
 import copy
 import botocore.response as br
-import pyodata
 import requests
-from PIL import Image
-import base64
+import base64 as b64
 from datetime import datetime, tzinfo,timezone,timedelta
 
 #from boto3.dynamodb.conditions import Key
@@ -18,8 +16,6 @@ from datetime import datetime, tzinfo,timezone,timedelta
 #clients
 s3       = boto3.client('s3')
 smclient = boto3.client('secretsmanager')
-lookoutvision_client = boto3.client('lookoutvision')
-ddb = boto3.resource('dynamodb')
 
 sapauth={}
 
@@ -34,30 +30,17 @@ def handler(event,context):
     
     try:
     # Read the image object    
-        response = s3.get_object(Bucket=bucket, Key=key)
-        imgcopy  =  s3.get_object(Bucket=bucket, Key=key)
-
-        imgbinary = imgcopy['Body'].read()        
-        file_stream  = response['Body']
-
-        image = Image.open(file_stream)
-        image_type=Image.MIME[image.format]
-        print(image_type)
-
-        image_bytes = io.BytesIO()
-        image.save(image_bytes, format=image.format)
-        image_bytes = image_bytes.getvalue()
-        detectIncident(image_bytes, image_type, key, imgbinary)
+        detectIncident(bucket, key)
 
     except Exception as e:
         traceback.print_exc()
         return e
         
-def detectIncident(image_bytes, image_type,key,imgbin):
+def detectIncident(bucket,key):
         # Amazon Rekognition client
     rekognition = boto3.client('rekognition')
     response = rekognition.detect_protective_equipment(
-        Image={'Bytes': image_bytes},
+        Image={'S3Object': {'Bucket': bucket, 'Name': key}},
         SummarizationAttributes={
             'MinConfidence': 90,
             'RequiredEquipmentTypes': [
@@ -76,9 +59,9 @@ def detectIncident(image_bytes, image_type,key,imgbin):
     
     if result > 0:
          #createNotification(image_bytes,image_type,key)
-         createIncident(image_bytes,image_type,key,imgbin)
+         createIncident(bucket,key)
          
-def createIncident(image, image_type, key,imgbin):
+def createIncident(bucket,key):
     try: 
         #IncidentNotification =  getODataClient(INCIDENT_SERVICE)
         #equipment,plant,material,object = key.split('/')
@@ -92,11 +75,17 @@ def createIncident(image, image_type, key,imgbin):
 
         #configItem = response['Items']
 
+        plant,location,camera,obj=key.split('/')
         notif_data = {'data':{}}
-        notif_data['data']['SourceSystem']=filedata['projectDisplayName']
-        notif_data['data']['DeviceLocation']=filedata['siteDisplayName']
-        notif_data['data']['DeviceType']=filedata['assetDisplayName']
+        #notif_data['data']['SourceSystem']=filedata['projectDisplayName']
+        #notif_data['data']['DeviceLocation']=filedata['siteDisplayName']
+        #notif_data['data']['DeviceType']=filedata['assetDisplayName']
         notif_data['data']['BUCKETId']=bucket
+        notif_data['data']['photo']=key
+        notif_data['data']['plant']=plant
+        notif_data['data']['camera']=camera
+        notif_data['data']['location']=location
+        
         
         incidendate = datetime.utcnow().isoformat()[:-7]+'Z'
         print("date is"+incidendate)
@@ -105,7 +94,7 @@ def createIncident(image, image_type, key,imgbin):
         }
         #payload["IncidentUTCDateTime"] = datetime.utcnow().isoformat()[:-7]+'Z'
         payload["IncidentCategory"] = "003"
-        payload["IncidentTitle"] = "Hello, From Pyodata"
+        payload["IncidentTitle"] = "PPE incident detected - Safety observation"
         payload["IncidentUTCDateTime"]=incidendate
         print(payload["IncidentUTCDateTime"])
         notif_data['data']['eventData']=payload
@@ -140,38 +129,7 @@ def get_aem_credentials():
 
 
     return f'Basic {token}'
-
-def getODataClient(service,**kwargs):
-    try:
-        sap_host = os.environ.get('SAP_HOST_NAME')
-        sap_port = os.environ.get('SAP_PORT')
-        sap_proto = os.environ.get('SAP_PROTOCOL')
-        serviceuri = sap_proto + '://' + sap_host + ':' + sap_port + service
-       
-        print('service call:'+serviceuri)
-       #Secret Manager
-        authresponse = smclient.get_secret_value(
-            SecretId=os.environ.get('SAP_AUTH_SECRET')
-        )
-
-        sapauth = json.loads(authresponse['SecretString'])
-        
-       #Set session headers - Auth,token etc
-        session = requests.Session()
-        #session.auth = (sapauth['user'],sapauth['password'])
-        session.headers.update({'APIKey': sapauth['APIKey']})
-        response = session.head(serviceuri, headers={'x-csrf-token': 'fetch'})
-        token = response.headers.get('x-csrf-token', '')
-        print(token)
-        session.headers.update({'x-csrf-token': token})
-
-        oDataClient = pyodata.Client(serviceuri, session)
-        
-        return oDataClient
-
-    except Exception as e:
-          traceback.print_exc()
-          return e
+  
 
 
 
