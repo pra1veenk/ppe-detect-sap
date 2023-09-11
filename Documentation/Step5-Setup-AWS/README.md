@@ -1,17 +1,12 @@
 ## Integrating Amazon Rekogntion - PPE detection and SAP Environment, health and Safety - Sustainability
 Safety hazards can exist in every workplace in many different forms: sharp edges, falling objects, flying sparks, chemicals, noise, and other potentially dangerous situations. Safety regulators such as Occupational Safety and Health Administration (OSHA) and European Commission often require that businesses protect their employees and customers from hazards that can cause injury by providing them personal protective equipment (PPE) and ensuring their use.With Amazon Rekognition PPE detection, customers can analyze images from their on-premises cameras across all locations to automatically detect if persons in the images are wearing the required PPE such as face covers, hand covers, and head covers. SAP customers use SAP Environment health and safety module to record these detections manually as safety observations.This solution provides an integration framework between Amazon Rekogntion and SAP Envriroment, Health and Safety(EHS).
 ## Architecture
-![architecture](/p4s.png)
+![architecture](/AWS-PPE detectionagain.png)
 
 
 ## SAP BTP integration pattern
  The architecture uses an APIKey for authentication. The preflow policy contains snippets from here to pass the provider credentials and xcsrf token to the consumer.
 The API proxy and policy steps are taken from the [SAP documentation](https://blogs.sap.com/2020/08/10/consuming-sap-on-premise-data-through-sap-api-management/) to pass the APIKey and XCSRF token.  
-![API product](/APIproduct.png)
-![API](/API.png)
-![API](/APIPolicy.png)
-
-
 This project is intended to be sample code only. Not for use in production.
 
 This project will create the following in your AWS cloud environment specified:
