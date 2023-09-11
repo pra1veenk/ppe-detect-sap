@@ -1,22 +1,20 @@
 {
     "env": {
-        "account": "782110148236",
-        "region": "eu-west-1"
+        "account": "298555126612",
+        "region": "us-east-1"
     },
-    "vpcId": "vpc-c80dd1b1",
-    "subnet": "subnet-05ab827f9a556a73c",
-    "stackName": "monitronsaptest",
+    "vpcId": "vpc-052cb29d1e8129700",
+    "subnet": "subnet-035fd4358c1621921",
+    "stackName": "ppetest",
     "sapenv": {
-        "SAP_EM_OAUTH_SECRET": "arn:aws:secretsmanager:eu-west-1:782110148236:secret:sapemauth-pnyaRN",
-        "SAP_EM_OAUTH_URL": "https://tfe-dev-eu10-004.authentication.eu10.hana.ondemand.com/oauth/token",
-        "SAP_EM_OAUTH_CLIENT_ID": "sb-default-85d8f3d8-255c-4122-b170-17f93ee9db4e-clone!b156115|xbem-service-broker-!b2436",
-        "SAP_EM_REST_URL": "https://enterprise-messaging-pubsub.cfapps.eu10.hana.ondemand.com/messagingrest/v1/topics/com%2Fsap%2Fpaa%2Findustry%2Fevent%2Fraised/messages"
+        "SAP_AEM_CREDENTIALS":"arn:aws:secretsmanager:eu-west-1:782110148236:secret:sapaem-credentials-iNmFXa",
+        "SAP_AEM_REST_URL": "https://mr-connection-giuyy7qx0z1.messaging.solace.cloud:9443/ppe/messages"
     },
-    "ddbtablename": "configm4s",
     "s3":{
-        "bucketname": "awspihe2ab",
-        "equipment": "CAM-01",
-        "inferencefolder":"monitron"
+        "bucketname": "awssapppe-p4s1",
+        "camera": "CAM-01",
+        "location": "CB-FL-001",
+        "plant": "1710"
     },
-     "lambdaTimeout": 900
+    "lambdaTimeout": 900
 }
