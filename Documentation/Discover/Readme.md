@@ -2,20 +2,11 @@
 
 This repository provides quick start guides for various AWS services involved in our architecture to help you get started with their features and functionalities.
 
-## Amazon Monitron
+## Amazon Rekognition
 
-Amazon Monitron is an end-to-end system that uses machine learning to detect abnormal conditions in industrial equipment and enable predictive maintenance. Check out the following resources to start learning:
+Amazon Rekognition offers pre-trained and customizable computer vision (CV) capabilities to extract information and insights from your images and videos. Learn more with these resources:
 
-- Getting Started Guide - [HTML](https://docs.aws.amazon.com/Monitron/latest/getting-started-guide/gsg-getting-started.html) | [PDF](https://docs.aws.amazon.com/pdfs/Monitron/latest/getting-started-guide/amazon-monitron-gsg.pdf) | [Video](https://www.youtube.com/watch?v=_cIiB-JEwVI&t=5s)
-- IT Manager's Guide - [HTML](https://docs.aws.amazon.com/Monitron/latest/admin-guide/admin_what-is-monitron.html) | [PDF](https://docs.aws.amazon.com/Monitron/latest/admin-guide/admin_what-is-monitron.html)
-- Monitron Datasheet- [PDF](https://d1.awsstatic.com/products/monitron/aws_monitron_datasheet.pdf)
-
-## Amazon Kinesis
-
-Amazon Kinesis cost-effectively processes and analyzes streaming data at any scale as a fully managed service. Ingest real-time data for various applications using these resources:
-
-- User Guide - [HTML](https://docs.aws.amazon.com/kinesis/) | [Video](https://aws.amazon.com/kinesis/data-streams/resources/?nc=sn&loc=5)
-
+- Getting Started - [HTML](https://aws.amazon.com/rekognition/) | [Video](https://youtu.be/fnFpE6UEd_I)
 ## Amazon S3
 
 Amazon Simple Storage Service (Amazon S3) is an object storage service offering scalability, data availability, security, and performance. Store and protect data for various use cases with these resources:
