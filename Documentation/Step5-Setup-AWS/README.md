@@ -71,7 +71,7 @@ $ cdk deploy
 
 ## Cleanup
 
-In order to delete all resources created by this CDK app, Follow this [tutorial](CleanupReadme.md)
+In order to delete all resources created by this CDK app, Follow this [tutorial](CleanupReadme.md) .
 
 ## Useful commands
 
