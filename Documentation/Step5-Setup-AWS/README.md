@@ -15,28 +15,28 @@ Leave other configurations as default and click **create**.
 2.  Clone the github repository and navigate to the directory.
 
 ```
-$ git clone https://github.com/ganeesin/ppedetection-ehs
+git clone https://github.com/ganeesin/ppedetection-ehs
 
-$ cd ppedetection-ehs
+cd ppedetection-ehs
 ```
 
 To manually create a virtualenv 
 
 ```
-$ python3 -m venv .env
+python3 -m venv .env
 ```
 
 After the init process completes and the virtualenv is created, you can use the following
 step to activate your virtualenv.
 
 ```
-$ source .env/bin/activate
+source .env/bin/activate
 ```
 
 Once the virtualenv is activated, you can install the required dependencies.
 
 ```
-$ pip install -r requirements.txt
+pip install -r requirements.txt
 ```
 
 The `appConfig.json` file takes the input paramters for the stack. Maintain the following parameters in the `appConfig.json` before deploying the stack
@@ -60,13 +60,13 @@ The `appConfig.json` file takes the input paramters for the stack. Maintain the 
 Bootstrap your AWS account for CDK. Please check [here](https://docs.aws.amazon.com/cdk/latest/guide/tools.html) for more details on bootstraping for CDK. Bootstraping deploys a CDK toolkit stack to your account and creates a S3 bucket for storing various artifacts. You incur any charges for what the AWS CDK stores in the bucket. Because the AWS CDK does not remove any objects from the bucket, the bucket can accumulate objects as you use the AWS CDK. You can get rid of the bucket by deleting the CDKToolkit stack from your account.
 
 ```
-$ cdk bootstrap aws://<YOUR ACCOUNT ID>/<YOUR AWS REGION>
+cdk bootstrap aws://<YOUR ACCOUNT ID>/<YOUR AWS REGION>
 ```
 
 Deploy the stack to your account. Make sure your CLI is setup for account ID and region provided in the appConfig.json file.
 
 ```
-$ cdk deploy
+cdk deploy
 ```
 
 ## Cleanup
