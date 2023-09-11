@@ -64,12 +64,15 @@ Build and deploy the application. Run the following commands:
     ![plot](./images/aem-application.png)
 
 11. Click on **Create Service**.
+
+    ![plot](./images/aem-create-service.png)
     
     Fill the **Service Name** as **Monitron** and select **Service Type** as **Standard**. Select **Amazon Web Services** from the drop down menu for **Cloud**, Choose **Frankfurt** as **Region** from the Map, leave the prepopulated version for **Broker Version** , for this tutorial.
 
     Click on **Create Service**
 
-    ![plot](./images/aem-create-service.png)
+    ![plot](./images/aem-service-created.png)
+
 
 12. Click on the created service **Monitron**
     ![plot](./images/aem-service-screen1.png)
