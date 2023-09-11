@@ -7,7 +7,10 @@ Safety hazards can exist in every workplace in many different forms: sharp edges
 
 This project is set up like a standard Python project.  For an integrated development environment (IDE), use `AWS Cloud9 environment` to create python virtual environment for the project with required dependencies.  
 
-1. Launch your AWS Cloud9 environment.
+1. Sign in to [AWS Console](https://aws.amazon.com/console/), navigate to **AWS Cloud9**. In AWS Cloud9,Click **Create new environment**. Select instance type as **t3.medium** or **t3.large** and select platform as **“Amazon Linux 2”**. 
+Under network settings, expand VPC settings and select the VPC created as part of [pre-requisites](VPCReadme.md).  
+Leave other configurations as default and click **create**.
+
 
 2.  Clone the github repository and navigate to the directory.
 
@@ -68,11 +71,7 @@ $ cdk deploy
 
 ## Cleanup
 
-In order to delete all resources created by this CDK app, run the following command
-
-```
-cdk destroy
-```
+In order to delete all resources created by this CDK app, Follow this [tutorial](CleanupReadme.md)
 
 ## Useful commands
 
@@ -82,4 +81,3 @@ cdk destroy
  * `cdk diff`        compare deployed stack with current state
  * `cdk docs`        open CDK documentation
 
-Enjoy!
