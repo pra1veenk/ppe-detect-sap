@@ -43,9 +43,18 @@ The `appConfig.json` file takes the input paramters for the stack. Maintain the 
 
 ## AWS environment details
 * `account` Enter AWS account id of your AWS cloud environment
+  Goto [AWS Console](https://us-east-1.console.aws.amazon.com/cloud9control/home?region=us-east-1#/product) and on the top right click on dropdown button as shown, Copy the Account ID as highlighted.
+   ![plot](./images/accountid.png)
 * `region`  Enter Region information where the stack resources needs to be created
-* `vpcId`   Enter the VPC for Lambda execution from where Lambda can access SAP resources and look out for vision
-* `subnet`  Enter the subnet for Lambda exection
+  Goto [AWS Console](https://us-east-1.console.aws.amazon.com/cloud9control/home?region=us-east-1#/product) and on the top right click on dropdown as highlighted which shows the region, copy the region associated to your AWS Account(Example - us-east-1)
+     ![plot](./images/region.png)
+* `vpcId`   Enter the VPC for Lambda execution
+  Goto [AWS Console](https://us-east-1.console.aws.amazon.com/cloud9control/home?region=us-east-1#/product) and type in "VPC" in the search tab->Click on VPC, you will see the list of all VPC's created in your AWS environment, select the VPC created as part of pre-requisite steps, Copy the vpcID as highlighted.
+   ![plot](./images/vpcid.png)
+* `subnet`  Enter the subnet ID for Lambda exection
+  Goto [AWS Console](https://us-east-1.console.aws.amazon.com/cloud9control/home?region=us-east-1#/product)and type in "Subnet" in the search tab->Click on Subnet, you will see the list of Subnet's created in your AWS environment, select the Private Subnet created as part of pre-requisite steps, Copy the SubnetID as highlighted below
+*  Note: Please provide a private subnet for the lambda execution.
+   ![plot](./images/subnetid.png)
 ## Resource Identifiers
 * `stackname` Enter an Identifier/Name for the CDK stack
 ## Bucket Structure
