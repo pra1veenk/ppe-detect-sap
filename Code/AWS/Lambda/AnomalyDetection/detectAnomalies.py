@@ -75,16 +75,13 @@ def createIncident(bucket,key):
 
         #configItem = response['Items']
 
-        plant,location,camera,obj=key.split('/')
+        #plant,location,camera,obj=key.split('/')
         notif_data = {'data':{}}
-        #notif_data['data']['SourceSystem']=filedata['projectDisplayName']
-        #notif_data['data']['DeviceLocation']=filedata['siteDisplayName']
-        #notif_data['data']['DeviceType']=filedata['assetDisplayName']
         notif_data['data']['BUCKETId']=bucket
         notif_data['data']['photo']=key
-        notif_data['data']['plant']=plant
-        notif_data['data']['camera']=camera
-        notif_data['data']['location']=location
+        notif_data['data']['SourceSystem']='AWS-PPE'
+        notif_data['data']['DeviceType']='Camera'
+        notif_data['data']['DeviceLocation']='L001'
         
         
         incidendate = datetime.utcnow().isoformat()[:-7]+'Z'
