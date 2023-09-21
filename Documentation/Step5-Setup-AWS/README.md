@@ -65,7 +65,7 @@ The `appConfig.json` file takes the input paramters for the stack. Maintain the 
    2. Click the 'Create' Bucket button.You will be taken to the "Create bucket" page to begin setting up your bucket.
       ![plot](./images/S3_2.png)
    3. Enter a name in the "Bucket name" field. The bucket name you choose must be unique across all existing bucket names in Amazon S3
-      ![plot](./images/S3_2.png)
+      ![plot](./images/S3_3.png)
    4. In the AWS region select the region for your S3 bucket. Please note that your bucket must be created in the same region as your VPC subnet
    5. Leave remaining options as default, scroll down and click 'Create' bucket. 
 ## SAP Environnment details
