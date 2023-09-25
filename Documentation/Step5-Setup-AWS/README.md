@@ -1,13 +1,9 @@
-## Integrating Amazon Rekognition - PPE detection and SAP Environment, health and Safety - Sustainability
-Safety hazards can exist in every workplace in many different forms: sharp edges, falling objects, flying sparks, chemicals, noise, and other potentially dangerous situations. Safety regulators such as Occupational Safety and Health Administration (OSHA) and European Commission often require that businesses protect their employees and customers from hazards that can cause injury by providing them personal protective equipment (PPE) and ensuring their use.With Amazon Rekognition PPE detection, customers can analyze images from their on-premises cameras across all locations to automatically detect if persons in the images are wearing the required PPE such as face covers, hand covers, and head covers. SAP customers use SAP Environment health and safety module to record these detections manually as safety observations.This solution provides an integration framework between Amazon Rekogntion and SAP Envriroment, Health and Safety(EHS). This solution helps organizations achieve their sustainability goals for workplace safety by fostering employee well being and reducing environment impact. 
-## Architecture
-![plot](./Architecture.png) **Figure-1: High-level architecture**
-
+With Amazon Rekognition PPE detection, customers can analyze images from their on-premises cameras across all locations to automatically detect if persons in the images are wearing the required PPE such as face covers, hand covers, and head covers. SAP customers use SAP Environment health and safety module to record these detections manually as safety observations.This solution provides an integration framework between Amazon Rekogntion and SAP Envriroment, Health and Safety(EHS). This solution helps organizations achieve their sustainability goals for workplace safety by fostering employee well being and reducing environment impact. 
 ## Deploying the CDK Project
 
-This project is set up like a standard Python project.  For an integrated development environment (IDE), use `AWS Cloud9 environment` to create python virtual environment for the project with required dependencies.  
+This project is set up like a standard Python project.  For an integrated development environment (IDE), use `SAP Business Application Studio` to create python virtual environment for the project with required dependencies.  
 
-1. Sign in to [AWS Console](https://aws.amazon.com/console/), navigate to **AWS Cloud9**. In AWS Cloud9,Click **Create new environment**. Select instance type as **t3.medium** or **t3.large** and select platform as **“Amazon Linux 2”**. 
+
 Under network settings, expand VPC settings and select the VPC created as part of [pre-requisites](VPCReadme.md).  
 Leave other configurations as default and click **create**.
 
