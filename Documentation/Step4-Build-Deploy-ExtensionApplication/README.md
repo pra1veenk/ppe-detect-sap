@@ -53,28 +53,28 @@ Build and deploy the application. Run the following commands:
 
     ![plot](./images/postdeploy.png)
 
-9. **Advanced Event Mesh Configuration**
+9. **SAP Integration Suite, Advanced Event Mesh Configuration**
 
-    To access the advanced event mesh, navigate to **Services** > and choose **Instances and Subscriptions**.
-    Choose the row for the advanced event mesh subscription and choose **Go to Application**
+    To access the SAP Integration Suite, Advanced Event Mesh, navigate to **Services** > and choose **Instances and Subscriptions**.
+    Choose the row for the SAP Integration Suite, Advanced Event Mesh subscription and choose **Go to Application**
 
     ![plot](./images/access-aem.png)
 
-10. Choose **Cluster Manager** in the Advanced Event Mesh Application. 
+10. Choose **Cluster Manager** in the SAP Integration Suite, Advanced Event Mesh Application. 
     ![plot](./images/aem-application.png)
 
 11. Click on **Create Service**.
 
     ![plot](./images/aem-create-service.png)
     
-    Fill the **Service Name** as **Monitron** and select **Service Type** as **Standard**. Select **Amazon Web Services** from the drop down menu for **Cloud**, Choose **Frankfurt** as **Region** from the Map, leave the prepopulated version for **Broker Version** , for this tutorial.
+    Fill the **Service Name** as **PPE** and select **Service Type** as **Standard**. Select **Amazon Web Services** from the drop down menu for **Cloud**, Choose **Frankfurt** as **Region** from the Map, leave the prepopulated version for **Broker Version** , for this tutorial.
 
     Click on **Create Service**
 
     ![plot](./images/aem-service-created.png)
 
 
-12. Click on the created service **Monitron**
+12. Click on the created service **PPE**
     ![plot](./images/aem-service-screen1.png)
 
     Click on the **connect** tab and expand the **REST** tile to get the messaging connectivity information.
@@ -107,7 +107,7 @@ Build and deploy the application. Run the following commands:
      Then click on **+ Subscription** to add a topic.
      ![plot](./images/aem-addtopicsubscription.png)
 
-     In the **Create Subscription** screen, type in the topic name as **monitron/messages** and click **Create**
+     In the **Create Subscription** screen, type in the topic name as **ppe/messages** and click **Create**
      ![plot](./images/aem-topic-name.png)    
 
      Topic Subscription successfully created. 
