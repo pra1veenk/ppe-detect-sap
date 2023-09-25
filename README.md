@@ -132,10 +132,6 @@ Step 3: Connect SAP BTP and SAP S/4HANA
 
 ## Additional Resources
 
-This project has been implemented based on the following SAP CAP sample repository.
-
-- [Cloud-cap-samples](https://github.com/SAP-samples/cloud-cap-samples/)
-
 Related projects :
 
 - [Events-to-Business-Actions-Framework](https://github.com/SAP-samples/btp-events-to-business-actions-framework/tree/main)
@@ -146,7 +142,7 @@ No known issues.
 
 ## Reference
 
-[AWS Monitron](https://docs.aws.amazon.com/Monitron/latest/user-guide/what-is-monitron.html)
+[AWS Rekognition](https://docs.aws.amazon.com/rekognition/latest/dg/what-is.html)
 
 ## Disclaimer
 

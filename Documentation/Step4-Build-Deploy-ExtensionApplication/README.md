@@ -61,6 +61,7 @@ Build and deploy the application. Run the following commands:
     ![plot](./images/access-aem.png)
 
 10. Choose **Cluster Manager** in the SAP Integration Suite, Advanced Event Mesh Application. 
+
     ![plot](./images/aem-application.png)
 
 11. Click on **Create Service**.
@@ -75,6 +76,7 @@ Build and deploy the application. Run the following commands:
 
 
 12. Click on the created service **PPE**
+
     ![plot](./images/aem-service-screen1.png)
 
     Click on the **connect** tab and expand the **REST** tile to get the messaging connectivity information.
@@ -89,15 +91,19 @@ Build and deploy the application. Run the following commands:
      ![plot](./images/aem-openbrokermanager.png)
 
      **b.** The **Broker Manager** application loads. The next step is to create a queue, on the left pane click on **Queues**  
+
      ![plot](./images/aem-click-on-queue.png)
 
      **c.** Create a Queue by name **Q/rdp1/input**
+
      ![plot](./images/aem-create-queue.png)
 
      Enable both incoming and outgoing configuration
+
      ![plot](./images/aem-queue2.png)    
 
      Queue successfully created
+
      ![plot](./images/aem-queue-created.png)    
 
      **d.** Add a **Topic Subscription** to the queue.
@@ -105,26 +111,33 @@ Build and deploy the application. Run the following commands:
      Click on the queue created and then click on the **Subscriptions** Tab.
 
      Then click on **+ Subscription** to add a topic.
+
      ![plot](./images/aem-addtopicsubscription.png)
 
      In the **Create Subscription** screen, type in the topic name as **ppe/messages** and click **Create**
+
      ![plot](./images/aem-topic-name.png)    
 
      Topic Subscription successfully created. 
+
      ![plot](./images/aem-topic-created.png)
 
      **e.** Create a **REST Delivery Point** object
 
      On the left pane click on **Clients** and then Navigate to **REST** tab.
+
      ![plot](./images/aem-rest-client.png)
 
      Click on ** + REST Delivery Point** and Fill the **RDP Name** as **rdp1**
+
      ![plot](./images/aem-rdp-name.png)
 
      Configure the REST Delivery Point
+
      ![plot](./images/aem-rdp-config.png)  
 
      REST Delivery Point successfully created
+     
      ![plot](./images/aem-rdp-created.png)  
 
      **f.**  Create a Queue Binding object
