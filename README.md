@@ -71,10 +71,20 @@ These are the technical prerequistics for an integration between AWS IoT Core, S
     >- Required to receive events from Amazon Monitron
 - SAP HANA Cloud 
     >- Required to store action configuration and logs for CAP application
+- SAP HANA Schemas & HDI Containers 
+    >- Application database for CAP Application
 - SAP Process Automation - Business Rules capability
     >- Business Rules service to configure business decisions that needs to be taken based on the type of event received from Amazon Monitron.
 - SAP S/4HANA System
     >- To execute the business action associated with the event received. 
+- SAP Connectivity Service
+    >- To establish connections between cloud applications and on-premise systems.
+- SAP Destination Service
+    >- To find the destination information required to access a remote service or system from your extension application.
+- SAP Private Link Service
+    >- To establishe a private connection between selected SAP BTP services and selected services in your own IaaS provider accounts.
+- SAP Business Application Studio
+    >- A powerful and modern development environment, tailored for efficient development of business applications for the Intelligent Enterprise.
 
 
 **Amazon Web Services**
