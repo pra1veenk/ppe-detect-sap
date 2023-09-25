@@ -1,9 +1,9 @@
 ## Check SAP S/4HANA Readiness
-In this section, you will activate the APIs related to purchase requisition for this scenario.
+In this section, you will activate the APIs related to SAP Environment, Health and Safety for this scenario.
 
 ### Activate the API_EHS_REPORT_INCIDENT_SRV Service
 
-1. In your SAP S/4HANA system, open the **/n/IWFND/MAINT_SERVICE** trasaction.
+1. In your SAP S/4HANA system, open the **/n/IWFND/MAINT_SERVICE** transaction.
 
 2. Activate the API_EHS_REPORT_INCIDENT_SRV service.
 
