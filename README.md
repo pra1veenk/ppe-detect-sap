@@ -118,7 +118,9 @@ Step 3: Connect SAP BTP and SAP S/4HANA
 
    - [(Option 2) Using SAP Private Link Service](./Documentation/Step3b-Setup-SAPPrivateLinkService/README.md)
 
-[Step 4: Build and Deploy the Extension Application](./Documentation/Step4-Build-Deploy-ExtensionApplication/README.md)
+[Step 4a: Build and Deploy the Extension Application](./Documentation/Step4a-Build-Deploy-ExtensionApplication/README.md)
+
+[Step 4b: SAP Integration Suite, Advanced Event Mesh Configuration](./Documentation/Step4b-Advanced-Event-Mesh-Configuration/README.md)
 
 [Step 5: Setup AWS Account](./Documentation/Step5-Setup-AWS/README.md)
 
