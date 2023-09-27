@@ -12,7 +12,7 @@ You have completed the end-to-end integration of events to business actions from
 
 2. Choose your **S3 Bucket** which was created earlier.  For example : **awssapppe-p4s** 
 
-    ![plot](./images/S3BucketFolder.png)
+    ![plot](./images/S3Bucket.png)
 
 3. Choose the folder named **1710/** and keep navigating into the folders, the final path would be **awssapppe-p4s/1710/CB-FL-001/CAM-01** as shown in the image below. Choose **Upload**
 
@@ -62,7 +62,7 @@ In the **CAM-01** folder, Choose **Upload**
 
 14. You should be able to see the **Safety Observation: PPE Incident detected** Screen, with the details of the event as follows:
 
-    ![plot](./images/SafetyObservationCreated.png)
+    ![plot](./images/SafeObservationCreated.png)
 
 
 You have completed the end-to-end integration of events to business actions from **Amazon Monitron** to **SAP S/4HANA** with **SAP BTP**.

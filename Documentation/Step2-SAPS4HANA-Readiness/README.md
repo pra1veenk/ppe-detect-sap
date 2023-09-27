@@ -3,10 +3,19 @@ In this section, you will activate the APIs related to SAP Environment, Health a
 
 ### Activate the API_EHS_REPORT_INCIDENT_SRV Service
 
-1. In your SAP S/4HANA system, open the **/n/IWFND/MAINT_SERVICE** transaction.
+1. In your SAP S/4HANA GUI system, open the **/n/IWFND/MAINT_SERVICE** transaction.
 
-2. Activate the API_EHS_REPORT_INCIDENT_SRV service.
+2. Activate the **API_EHS_REPORT_INCIDENT_SRV** service.
 
+    ![plot](./images/s4EHS.png)
+
+Creating a **EHS Incident Safety Observation**  requires two roles 
+```
+- SAP_BR_INDUSTRIAL_HYGIENIST
+- SAP_EHSM_HSS_INCIDENT_MANAGER
+```
+
+Make sure to add these roles. To add these roles, in your SAP S/4HANA GUI system, open the **/n/su01** transaction.
 
 
 Based on your business scenario, expose the respective APIs (For example, Record Safety Observation, Report Incident etc.).
