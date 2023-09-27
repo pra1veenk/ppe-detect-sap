@@ -1,38 +1,70 @@
 ## Test the Extension Application and Execute the End-to-End Scenario
 
-Now that you have successfully deployed the extension application in SAP BTP and completed the configurations in Amazon AWS, SAP BTP and SAP S/4HANA, follow these steps to test the application.
+Now that you have successfully deployed the extension application in SAP BTP and completed the configurations in AWS, SAP BTP and SAP S/4HANA, follow these steps to test the application.
 
-1. Send device telemetry data from device using aws-iot-device-sdk to the device that you have onboarded.
 
-2. Once the filllevel is less than the threshold(20) configured in the AWS IoT Core rules, "Low-stock" event is triggered and sent to SAP Event Mesh and a Purchase Requisition for re-filling the material is created in SAP S/4 HANA.
 
-3. Log into SAP S/4HANA System and Search for **Manage Purchase Requisition** app.
+You have completed the end-to-end integration of events to business actions from **Amazon Rekognition - PPE detection** to **SAP S/4HANA** with **SAP BTP**.
 
-    ![plot](./images/S4HANASearchApp.png)
+1. Go to to your AWS account and Navigate to **S3** Service.
 
-4. Choose **Go** and then choose the latest purchase requsition.
+    ![plot](./images/S3Search.png)
 
-    ![plot](./images/PurchaseRequisitionList.png)
+2. Choose your **S3 Bucket** which was created earlier.  For example : **awssapppe-p4s** 
 
-5. In the **Purchase Requisition Items** table, verify if **Item** column is updated with Fill Level information.
+    ![plot](./images/S3BucketFolder.png)
 
-    ![plot](./images/PurchaseRequsitionWithFillLevel.png)
+3. Choose the folder named **1710/** and keep navigating into the folders, the final path would be **awssapppe-p4s/1710/CB-FL-001/CAM-01** as shown in the image below. Choose **Upload**
 
-6. Open **action-management** application in your cloud foundry space using BTP Cockpit. Click on the url provided under Application Routes section.
+    ![plot](./images/S3CAMFolder.png)
 
-    ![plot](./images/ActionManagementApplication.png)
+4. Download the [Missing-Gloves.jpg](Missing-Gloves.jpg). The image captures a group pf people working on site but have missing hand gloves, which in our case indicates a missing Personal Protective Equipment. Hence, this file is used as the sample event for testing the scenario.
+In the **CAM-01** folder, Choose **Upload**
 
-7. Click on **Business Action Logs** tile.
+    ![plot](./images/S3Upload.png)
 
-    ![plot](./images/ActionManagementHome.png)
+5. Click on **Add files**, choose the [Missing-Gloves.jpg](Missing-Gloves.jpg) downloaded in the previous step. Choose **Upload**.
 
-8. View Logs information and you can filter by date and status. 
+    ![plot](./images/AddFile.png)
 
-    ![plot](./images/LogsListView.png)
+6. Upon the file upload, you should get a **Upload Succeeded** message
 
-9. Choose any entry from analytical table in Log Details Section. Click on **Re-Process** button to re-process the failed events.
+    ![plot](./images/FileAdded.png)
 
-    ![plot](./images/LogsDetailView.png)
+7. In the SAP BTP cockpit, navigate to your subaccount and choose **Cloud Foundry** > **Spaces**. Choose your space and then choose **action-management** application. Choose the url provided under **Application Routes** section.
 
-You have completed the end-to-end integration of events to business actions from Amazon AWS to SAP S/4HANA with SAP BTP.
+    ![plot](./images/action-management-url.png)
+
+8. Choose **Business Action Logs** Tile.
+
+    ![plot](./images/LogTile.png)
+
+9. Under **Log Details**, click on the **Complete** to expand it. You should see a entry with **Create EHS Incident**. **Click** on it to see the details.
+
+    ![plot](./images/CheckLogs.png)
+
+10. You can see the that the execution was successful, meaning an EHS Incident was created in the S/4HANA System.
+
+    ![plot](./images/ActionSuccessfulLog.png)
+
+11. To verify the creation of **EHS Incident**, Log into **SAP S/4HANA Fiori Application** System.
+
+    ![plot](./images/S4LOGIN.png)
+
+
+12. Navigate to **Health & Safety** Tab and Choose **Manage Incidents** Tile.
+
+    ![plot](./images/ManageIncident.png)
+
+13. In the **Manage Incidents Screen**, Choose the latest record.
+
+    ![plot](./images/ChooseObservation.png)
+
+14. You should be able to see the **Safety Observation: PPE Incident detected** Screen, with the details of the event as follows:
+
+    ![plot](./images/SafetyObservationCreated.png)
+
+
+You have completed the end-to-end integration of events to business actions from **Amazon Monitron** to **SAP S/4HANA** with **SAP BTP**.
+
 

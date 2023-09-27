@@ -56,6 +56,23 @@ The `appConfig.json` file takes the input paramters for the stack. Maintain the 
 
 * `bucketname` Enter the name of the bucket to be created where the images will be captured for analysis 
 
+To Create a S3 Bucket, Follow steps as below:
+   1. Goto [AWS Console](https://us-east-1.console.aws.amazon.com/cloud9control/home?region=us-east-1#/product)and type in "S3" in the search tab->Click on 'S3'
+
+      ![plot](./images/S3_1.png)
+      
+   2. Click the 'Create' Bucket button.You will be taken to the "Create bucket" page to begin setting up your bucket.
+
+      ![plot](./images/S3_2.png)
+      
+   3. Enter a name in the "Bucket name" field. The bucket name you choose must be unique across all existing bucket names in Amazon S3
+
+      ![plot](./images/S3_3.png)
+      
+   4. In the AWS region select the region for your S3 bucket. **Please note that your bucket must be created in the same region as your VPC subnet**
+      
+   5. Leave remaining options as default, scroll down and click 'Create' bucket.
+
 * `inferencefolder` Enter the name of the folder(prefix)where the inferences/data are sent (path to folder in your S3 bucket, for example, **s3bucket1/ppe** is the path and **ppe** is **inferencefolder**). Leave blank if no folder
 
 ## SAP Environnment details
