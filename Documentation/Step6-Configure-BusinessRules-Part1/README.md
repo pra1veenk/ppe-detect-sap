@@ -1,4 +1,5 @@
 ## Create SAP Business Rules Project
+
 In this section, you will configure SAP Business Rule project which will be used to determine which business action should be executed for an event. Additionally, based on your scenario you can create decision tables and business rules.
 
 ### 1. Configure Systems
@@ -24,7 +25,7 @@ In this section, you will configure SAP Business Rule project which will be used
 
 ### 2. Create Business Rules Project
 
-1. Download the [**EventsToActionsRulesProject.zip**](./EventsToActionsRulesProject.zip) file and [**MonitronActionConfigurations.zip**](./MonitronActionConfigurations.zip) file which contains the SAP Business Rules project.
+1. Download the [**EventsToActionsRulesProject.zip**](./EventsToActionsRulesProject.zip) file which contains the SAP Business Rules project.
 
 2. Choose **Design** to create new or import new rule projects.
 
@@ -39,10 +40,6 @@ In this section, you will configure SAP Business Rule project which will be used
 5. You will see the imported project as shown in the screeshot, choose the  **EventsToActionRulesProject** to view the details of the project.
 
     ![plot](./images/prj-imported.png)   
-
-    Similarly import the **MonitronActionConfigurations.zip** 
-
-        ![plot](./images/monitron-configs-zip.png)
 
 6. In the **Rule Services** tab, choose the **Settings** icon and then select **ID** from the **Define Column Properties** list.
 

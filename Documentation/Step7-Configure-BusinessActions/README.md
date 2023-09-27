@@ -1,4 +1,4 @@
-## Configure SAP S/4HANA Business Actions in the extension application
+## Configure SAP S/4HANA Business Actions in the Extension Application
 
 In this section, you will define business action in the action-management extension application in SAP BTP. Ensure your application's **Requested State** is **Started**.
 
@@ -47,7 +47,7 @@ In this section, you will define business action in the action-management extens
 
     Change host name in URL, User, Password as per your SAP S/4HANA system details.
 
-    - In case of SAP S/4HANA system on AWS Private Cloud, choose **Proxy Type** as **PrivateLink** and the private link **hostname** copied from [Step4b-Setup-SAPPrivateLinkService](../Step4b-Setup-SAPPrivateLinkService/README.md) in the **hostname** field.
+    - In case of SAP S/4HANA system on AWS Private Cloud, choose **Proxy Type** as **PrivateLink** and the private link **hostname** copied from [Step3b-Setup-SAPPrivateLinkService](../Step3b-Setup-SAPPrivateLinkService/README.md) in the **hostname** field.
 
         ```
         Name: ACTION_MODELER_S4
@@ -69,7 +69,7 @@ In this section, you will define business action in the action-management extens
 
         ![plot](./images/S4HANAPLDestination.png)
 
-    - In case of SAP S/4HANA On-Premise system, choose **Proxy Type** as **OnPremise** and use the **Virtual Host**:**Virtual Port** in the **hostname** placeholder below created at [Step4a-SetupCloudConnector](../Step4a-SetupCloudConnector/README.md) to connect using Cloud Connector.
+    - In case of SAP S/4HANA On-Premise system, choose **Proxy Type** as **OnPremise** and use the **Virtual Host**:**Virtual Port** in the **hostname** placeholder below created at [Step3a-SetupCloudConnector](../Step3a-SetupCloudConnector/README.md) to connect using Cloud Connector.
 
         ```
         Name: ACTION_MODELER_S4
@@ -126,7 +126,7 @@ In this section, you will configure the different business actions that needs to
     Content-Type: application/json
     Method: POST
     Relative Path: /workingset-rule-services
-    Payload: { "RuleServiceId": "<RulesServiceID>","Vocabulary": [ { "EventInfo":{ "SourceSystem": "${{event.data.SourceSystem}}","DeviceLocation": "${{event.data.DeviceLocation}}","DeviceType": "${{event.data.DeviceType}}" } } ] }
+    Payload: { "RuleServiceId": "<RulesServiceID>","Vocabulary": [ { "EventInfo":{ "BUCKETId":"${{event.data.BUCKETId}}", "photo":"${{event.data.photo}}", "SourceSystem": "${{event.data.SourceSystem}}","DeviceLocation": "${{event.data.DeviceLocation}}","DeviceType": "${{event.data.DeviceType}}" } } ] }
     Action Id Path in Response: Result[0].ActionInfo.ActionId
     ```
 
@@ -136,62 +136,34 @@ In this section, you will configure the different business actions that needs to
 
 6. Choose **Create**.
 
-7. Create another business action with name **FetchEquipmentDetails** and enter the following configuration values.
+7. Create another business action with name **Create EHS Incident** and enter the following  configuration values.
 
 ```
     Basic Information:
 
-    Action Name: FetchEquipmentDetails
-    Description: FetchEquipmentDetails
-    Category: Pre/Post Action
-    Action Type: Service Integration
-    
-    HTTP Information:
-    Destination: ACTION_BUSINESS_RULES
-    Content-Type: application/json
-    Method: POST
-    Relative Path: /workingset-rule-services
-    Payload: { "RuleServiceId": "2c63b92dc775482682d230d031b14b1a", "Vocabulary": [ { "BucketInfo":{ "BucketName": "${{event.data.BUCKETId}}" } } ] }
-
-    Is Csrf Token Needed?: false
-
-```
-
-Your configuration should look like this:
-
-![plot](./images/FetchEquipmentDetails.png)
-
-8. Create another business action with name **Create PM Notification** and enter the following  configuration values.
-
-```
-    Basic Information:
-
-    Action Name: Create PM Notification
-    Description: Create notification in SAP PM for Monitron
+    Action Name: Create EHS Incident
+    Description: Create EHS incident if any volilation of PPE protection is detected
     Category: Main Action
     Action Type: Service Integration
+```
+
+```
     
     HTTP Information:
     Destination: ACTION_MODELER_S4
     Content-Type: application/json
     Method: POST
-    Relative Path: /API_PURCHASEREQ_PROCESS_SRV/A_PurchaseRequisitionHeader
+    Relative Path:/API_EHS_REPORT_INCIDENT_SRV/A_Incident
     Payload: {
-        
-    "NotificationText":"Monitron error ",
-    "MaintNotifLongTextForEdit":"Needs Maintenance, Monitron location: ${{pre.717174c8-8f1c-4166-ab8f-cd946286ab04.Result[0].EquipmentDetails.Location}} and equipment: ${{pre.717174c8-8f1c-4166-ab8f-cd946286ab04.Result[0].EquipmentDetails.Equipment}}",
-    "NotificationType": "M1","TechnicalObject": "${{pre.717174c8-8f1c-4166-ab8f-cd946286ab04.Result[0].EquipmentDetails.Equipment}}",
-    "TechObjIsEquipOrFuncnlLoc": "EAMS_EQUI",
-    "TechnicalObjectLabel": "${{pre.717174c8-8f1c-4166-ab8f-cd946286ab04.Result[0].EquipmentDetails.Equipment}}"
-
+        "IncidentCategory": "${{event.data.eventData.IncidentCategory}}",
+        "IncidentTitle": "${{event.data.eventData.IncidentTitle}}",
+        "IncidentUTCDateTime": "${{event.data.eventData.IncidentUTCDateTime}}",
+        "IncidentDescriptionOfEvents":"Check s3 bucket "${{event.data.BUCKETId}}" and filename for incident image"
     }
     Is Csrf Token Needed?: true
 
-    Related Actions: 
-    Flow Type: Pre Action
-    Action: FetchEquipmentDetails
 ```
 
 Your configuration should look like this:
 
-![plot](./images/CreatePMNotificationAction.png)
+![plot](./images/CreateEHSIncidentAction.png)

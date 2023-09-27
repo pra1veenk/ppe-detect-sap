@@ -72,7 +72,7 @@ For Storing **SAP_AEM_CREDENTIALS** we need the Advanced Event Mesh UserName and
 
  ![plot](./images/access-aem.png)
 
-In the Application, Navigate to the Cluster Service **Monitron** created in **Step1** and Click on **Connect** Tab. 
+In the Application, Navigate to the Cluster Service **PPE** created in **Step1** and Click on **Connect** Tab. 
 
  ![plot](./images/aem-connect.png)
 
@@ -103,7 +103,7 @@ So your `appConfig.json` file looks as shown below: Fill all the details by foll
     },
     "vpcId": "<your_vpc_id>",
     "subnet": "<your_private_subnet>",
-    "stackName": "monitronsaptest",
+    "stackName": "PPEtest",
     "sapenv": {
         "SAP_AEM_CREDENTIALS":"<your_secret_arn>",
         "SAP_AEM_REST_URL": "<your_aem_rest_url>"
