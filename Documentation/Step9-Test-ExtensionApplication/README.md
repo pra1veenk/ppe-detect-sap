@@ -65,6 +65,6 @@ In the **CAM-01** folder, Choose **Upload**
     ![plot](./images/SafeObservationCreated.png)
 
 
-You have completed the end-to-end integration of events to business actions from **Amazon Monitron** to **SAP S/4HANA** with **SAP BTP**.
+You have completed the end-to-end integration of events to business actions from **Amazon Rekognition - PPE Detection** to **SAP S/4HANA** with **SAP BTP**.
 
 

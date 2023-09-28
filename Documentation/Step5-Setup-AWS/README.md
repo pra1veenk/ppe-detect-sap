@@ -113,7 +113,7 @@ Fill the **Secret name** as **sapaem-credentials** and Click on **Next**
 So your `appConfig.json` file looks as shown below: Fill all the details by following the steps mentioned above. 
 
    ```
-   {
+{
     "env": {
         "account": "<your_aws_account_id>",
         "region":"<your_aws_account_region>"
@@ -127,7 +127,9 @@ So your `appConfig.json` file looks as shown below: Fill all the details by foll
     },
     "s3":{
         "bucketname": "mybucket",
-        "inferencefolder":"ppe"
+        "camera": "CAM-01",
+        "location": "CB-FL-001",
+        "plant": "1710"
        },
      "lambdaTimeout": 900
    }

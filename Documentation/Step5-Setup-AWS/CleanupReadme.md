@@ -13,7 +13,7 @@ Following are the steps to cleanup CDK stack
 ![plot](./images/cleanup2.png)
 
 6. Access the AWS Management Console, select Services. at the top of the screen, and select the CloudFormation service. Or, you can type **CloudFormation** in the search box to the right of Services, then select **CloudFormation** from the list that comes up.
-7. Select the stack name example <monitronsaptest>, and click **delete**.
+7. Select the stack name example <PPEtest>, and click **delete**.
 
 ![plot](./images/cleanup3.png)
 8. Click **Delete** to delete stack permanently.

@@ -68,13 +68,13 @@ These are the technical prerequistics for an integration between AWS IoT Core, S
 - Authorization & Trust Management Service
     > - Required for securing the extension application in SAP BTP
 - SAP Integration Suite,Advanced Event Mesh 
-    >- Required to receive events from Amazon Monitron
+    >- Required to receive events from Amazon Rekognition
 - SAP HANA Cloud 
     >- Required to store action configuration and logs for CAP application
 - SAP HANA Schemas & HDI Containers 
     >- Application database for CAP Application
 - SAP Process Automation - Business Rules capability
-    >- Business Rules service to configure business decisions that needs to be taken based on the type of event received from Amazon Monitron.
+    >- Business Rules service to configure business decisions that needs to be taken based on the type of event received from Amazon Rekognition.
 - SAP S/4HANA System
     >- To execute the business action associated with the event received. 
 - SAP Connectivity Service
@@ -148,7 +148,7 @@ No known issues.
 
 ## Disclaimer
 
-This project has been a proof of concept, including several limitations and prerequisites. The objective was to build a extension application for receiving and automating the actions in SAP S/4HANA. For this reason, the coding should not be seen as any recommendation for productive implementation. It fulfils the purpose and requirements of a proof of concept and is not intended for productive usage. It has been declared as pure proof of concept only to give the development teams ideas for solving potential challenges when integrating events from other platforms like AWS Monitron and SAP S/4HANA using SAP BTP. This can be extended to integrate with any other SAP LoB system as well.
+This project has been a proof of concept, including several limitations and prerequisites. The objective was to build a extension application for receiving and automating the actions in SAP S/4HANA. For this reason, the coding should not be seen as any recommendation for productive implementation. It fulfils the purpose and requirements of a proof of concept and is not intended for productive usage. It has been declared as pure proof of concept only to give the development teams ideas for solving potential challenges when integrating events from other platforms like Amazon Rekognition - PPE Detection and SAP S/4HANA using SAP BTP. This can be extended to integrate with any other SAP LoB system as well.
 
 ## How to Obtain Support
 

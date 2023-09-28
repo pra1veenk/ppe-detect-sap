@@ -55,7 +55,7 @@ These are the technical prerequistics for an integration between AWS, SAP BTP an
     > - Required for securing the extension application in SAP BTP
 
 - SAP Integration Suite,Advanced Event Mesh 
-    >- Required to receive events from Amazon Monitron
+    >- Required to receive events from Amazon Rekognition
 
 - SAP HANA Cloud 
     >- Required to store action configuration and logs for CAP application
@@ -64,7 +64,7 @@ These are the technical prerequistics for an integration between AWS, SAP BTP an
     >- Application database for CAP Application
 
 - SAP Process Automation - Business Rules capability
-    >- Business Rules service to configure business decisions that needs to be taken based on the type of event received from Amazon Monitron.
+    >- Business Rules service to configure business decisions that needs to be taken based on the type of event received from Amazon Rekognition.
 
 - SAP S/4HANA System
     >- To execute the business action associated with the event received. 
