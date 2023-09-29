@@ -6,11 +6,11 @@ Now that you have successfully deployed the extension application in SAP BTP and
 
 You have completed the end-to-end integration of events to business actions from **Amazon Rekognition - PPE detection** to **SAP S/4HANA** with **SAP BTP**.
 
-1. Go to to your AWS account and Navigate to **S3** Service.
+1. Go to to your AWS account and Navigate to **Amazon S3** Service.
 
     ![plot](./images/S3Search.png)
 
-2. Choose your **S3 Bucket** which was created earlier.  For example : **awssapppe-p4s** 
+2. Choose your **Amazon S3 Bucket** which was created earlier.  For example : **awssapppe-p4s** 
 
     ![plot](./images/S3Bucket.png)
 
@@ -47,7 +47,7 @@ In the **CAM-01** folder, Choose **Upload**
 
     ![plot](./images/ActionSuccessfulLog.png)
 
-11. To verify the creation of **EHS Incident**, Log into **SAP S/4HANA Fiori Application** System.
+11. To verify the creation of **EHS Incident**, Log into **SAP S/4HANA Fiori Launchpad**.
 
     ![plot](./images/S4LOGIN.png)
 
