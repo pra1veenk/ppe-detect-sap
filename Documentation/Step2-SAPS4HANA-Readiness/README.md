@@ -7,7 +7,7 @@ In this section, you will activate the APIs related to SAP Environment, Health a
 
 2. Activate the **API_EHS_REPORT_INCIDENT_SRV** service.
 
-    ![plot](./images/s4EHS.png)
+    ![plot](./images/s4EHS-service.png)
 
 Creating a **EHS Incident Safety Observation**  requires two roles 
 ```
@@ -17,9 +17,9 @@ Creating a **EHS Incident Safety Observation**  requires two roles
 
 Make sure to add these roles. To add these roles, in your SAP S/4HANA GUI system, 
 
-1. open the **/n/su01** transaction.
+1. Open the **/n/su01** transaction in SAP S/4HANA.
 
-2. Find the S/4HANA user you want to add the roles to and Press Enter.
+2. Find the SAP S/4HANA user you want to add the roles to and Press Enter.
 
 3. Click the **Roles** Tab and Choose the **Edit** Option.
 

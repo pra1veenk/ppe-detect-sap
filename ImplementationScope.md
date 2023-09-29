@@ -1,4 +1,4 @@
-## Integrating Amazon Rekogntion - PPE detection and SAP Environment, health and Safety - Sustainability
+## Integrating Amazon Rekogntion and SAP EHS with SAP BTP for PPE Detection
 
 [![REUSE status](https://api.reuse.software/badge/github.com/SAP-samples/btp-events-to-business-actions-framework)](https://api.reuse.software/info/github.com/SAP-samples/btp-events-to-business-actions-framework)
 
