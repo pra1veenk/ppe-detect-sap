@@ -1,4 +1,4 @@
-## Integrating Amazon Rekogntion and SAP EHS with SAP BTP for PPE Detection
+## Integrating Amazon Rekognition and SAP EHS with SAP BTP for PPE Detection
 
 [![REUSE status](https://api.reuse.software/badge/github.com/SAP-samples/btp-events-to-business-actions-framework)](https://api.reuse.software/info/github.com/SAP-samples/btp-events-to-business-actions-framework)
 
@@ -10,7 +10,7 @@ This framework can be used in combination with any hyperscalar/telco IoT.
 
  ## Scenario
 
-Safety hazards can exist in every workplace in many different forms: sharp edges, falling objects, flying sparks, chemicals, noise, and other potentially dangerous situations. Safety regulators such as Occupational Safety and Health Administration (OSHA) and European Commission often require that businesses protect their employees and customers from hazards that can cause injury by providing them personal protective equipment (PPE) and ensuring their use.With Amazon Rekognition PPE detection, customers can analyze images from their on-premises cameras across all locations to automatically detect if persons in the images are wearing the required PPE such as face covers, hand covers, and head covers. SAP customers use SAP Environment health and safety module to record these detections manually as safety observations.This solution provides an integration framework between Amazon Rekogntion and SAP Envriroment, Health and Safety(EHS).
+Safety hazards can exist in every workplace in many different forms: sharp edges, falling objects, flying sparks, chemicals, noise, and other potentially dangerous situations. Safety regulators such as Occupational Safety and Health Administration (OSHA) and European Commission often require that businesses protect their employees and customers from hazards that can cause injury by providing them personal protective equipment (PPE) and ensuring their use.With Amazon Rekognition PPE detection, customers can analyze images from their on-premises cameras across all locations to automatically detect if persons in the images are wearing the required PPE such as face covers, hand covers, and head covers. SAP customers use SAP Environment health and safety module to record these detections manually as safety observations.This solution provides an integration framework between Amazon Rekognition and SAP Envriroment, Health and Safety(EHS).
 
 
 ## Solution Architecture
@@ -30,7 +30,7 @@ The following steps depicts the information flow across systems:
 
 (3) The lambda function calls Amazon Rekognition PPE detection model to detect any visual inspection issues with the product.
 
-(4) Amazon Rekogntion – PPE detection evaluated the image for any missing PPE equipment like Hand gloves, Face covers, Head gears and safety visors. if an anomaly is detected, The Lambda function accesses AWS secrets Manager for credential information for SAP BTP
+(4) Amazon Rekognition – PPE detection evaluated the image for any missing PPE equipment like Hand gloves, Face covers, Head gears and safety visors. if an anomaly is detected, The Lambda function accesses AWS secrets Manager for credential information for SAP BTP
 
 (5) The lambda function calls the SAP Integration Suite, Advanced event mesh and passes the event payload. Event-to-Business-Action framework(extension app) processor module's endpoint is subscribed to SAP Advanced Event Mesh, hence receives this event.
 
