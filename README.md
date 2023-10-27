@@ -2,11 +2,9 @@
 
 [![REUSE status](https://api.reuse.software/badge/github.com/SAP-samples/btp-events-to-business-actions-framework)](https://api.reuse.software/info/github.com/SAP-samples/btp-events-to-business-actions-framework)
 
-This repository contains code samples and instructions for developing an extension application in SAP BTP. The sample application has been developed in a partner collaboration to help customers integrate any type of events from systems into SAP ecosystem via SAP BTP. This application helps to configure actions that needs to be taken in SAP LoB systems based on the events that is received in SAP Advanced Event Mesh. The application scenario you will develop in this tutorial leverages Event-To-Business actions framework (extension application).
+This repository contains code samples and instructions for developing an extension application in SAP BTP. The sample application has been developed in a partner collaboration to help customers integrate any type of events from systems into SAP ecosystem via SAP BTP. This application helps to configure actions that needs to be taken in SAP LoB systems based on the events that is received in SAP Integration Suite, Advanced Event Mesh. The application scenario you will develop in this tutorial leverages Event-To-Business actions framework (extension application). This framework can be used in combination with any hyperscalar/telco IoT.
 
-This framework can be used in combination with any hyperscalar/telco IoT.
-
- In this tutorial, the **events** are received from **Amazon Rekognition - PPE Detection** and the **actions** for these events are taken in **SAP S/4HANA**. You can use this application to further customize it for other systems as well.
+In this tutorial, the **events** are received from **Amazon Rekognition - PPE Detection** and the **actions** for these events are taken in **SAP S/4HANA**. You can use this application to further customize it for other systems as well.
 
  ## Table of Contents
 
@@ -31,9 +29,9 @@ Safety hazards can exist in every workplace in many different forms: sharp edges
 
 ## Solution Architecture
 
-The key services used from **AWS** are Amazon Rekognition PPE Detection, Amazon S3, Amazon Lambda Function, AWS Secrets Manager. The services used from **SAP BTP** are the Cloud Foundry Runtime, SAP Advanced Event Mesh, SAP Connectivity service, SAP Private Link service, SAP Workflow Management and SAP Destination service.
+The key services used from **AWS** are Amazon Rekognition PPE Detection, Amazon S3, Amazon Lambda Function, AWS Secrets Manager. The services used from **SAP BTP** are the Cloud Foundry Runtime, SAP Integration Suite Advanced Event Mesh, SAP Connectivity service, SAP Private Link service, SAP Build Process Automation - Decision capability, SAP Destination service and SAP Business Application Studio.
 
-SAP Private Link service is used for connectivity between SAP BTP and SAP S/4HANA when both the systems are running on Amazon AWS Infrastructure, in this tutorial you will find implementation steps for SAP BTP Private Link service and AWS Private Link service. Alternatively you can use SAP Connectivity service and Cloud Connector for integration of SAP BTP and SAP S/4HANA as well.
+SAP Private Link service is used for connectivity between SAP BTP and SAP S/4HANA when both the systems are running on AWS Infrastructure, in this tutorial you will find implementation steps for SAP BTP Private Link service and AWS Private Link service. Alternatively you can use SAP Connectivity service and Cloud Connector for integration of SAP BTP and SAP S/4HANA as well.
 
 
 ![plot](./SolutionArchitecture.png) **Figure-1: High-level architecture (with SAP S/4HANA on AWS)**
@@ -50,7 +48,7 @@ The following steps depicts the information flow across systems:
 
 (5) The lambda function calls the SAP Integration Suite, Advanced event mesh and passes the event payload. Event-to-Business-Action framework(extension app) processor module's endpoint is subscribed to SAP Advanced Event Mesh, hence receives this event.
 
-(6) Event-to-Business-Action framework(extension app) processor module leverages the Business Rules capability of SAP Build Process Automation to derive business action (for example, In this scenario,**EHS Incident Report Safety Observation** creation in SAP S/4HANA system) based on certain characteristics of incoming event.
+(6) Event-to-Business-Action framework(extension app) processor module leverages the Decision capability of SAP Build Process Automation to derive business action (for example, In this scenario,**EHS Report Incident- Safety Observation** creation in SAP S/4HANA system) based on certain characteristics of incoming event.
 
 (7), (8), (9) (10) and (11) Event-to-Business-Action framework (extension app) processor module triggers the defined action in the SAP S/4HANA system by using the SAP Destination Service and SAP Private Link Service.
 
@@ -58,13 +56,11 @@ For more information, see Set Up Connectivity Between SAP BTP and SAP S/4HANA Us
 
 ## Requirements
 
-These are the technical prerequistics for an integration between AWS IoT Core, SAP BTP and SAP S/4HANA. 
+These are the technical prerequistics for an integration between AWS, SAP BTP and SAP S/4HANA. 
 
 **Services in SAP BTP**
 - Cloud Foundry Runtime
     > - Foundation for running the CAP extension application for translating events to business actions.
-- Memory/Runtime quota
-    > - Required for deploying and running the extension application in SAP BTP
 - Authorization & Trust Management Service
     > - Required for securing the extension application in SAP BTP
 - SAP Integration Suite,Advanced Event Mesh 
@@ -73,8 +69,8 @@ These are the technical prerequistics for an integration between AWS IoT Core, S
     >- Required to store action configuration and logs for CAP application
 - SAP HANA Schemas & HDI Containers 
     >- Application database for CAP Application
-- SAP Process Automation - Business Rules capability
-    >- Business Rules service to configure business decisions that needs to be taken based on the type of event received from Amazon Rekognition.
+- SAP Build Process Automation - Decision capability
+    >- SAP Build Process Automation - Decisions service to configure business decisions that needs to be taken based on the type of event received from Amazon Rekognition.
 - SAP S/4HANA System
     >- To execute the business action associated with the event received. 
 - SAP Connectivity Service
@@ -124,7 +120,7 @@ Step 3: Connect SAP BTP and SAP S/4HANA
 
 [Step 5: Setup AWS Account](./Documentation/Step5-Setup-AWS/README.md)
 
-[Step 6: Create SAP Business Rules Project](./Documentation/Step6-Configure-BusinessRules-Part1/README.md)
+[Step 6: Create SAP Build Process Automation-Decisions Project](./Documentation/Step6-Configure-BusinessRules-Part1/README.md)
 
 [Step 7: Configure SAP S/4HANA Business Actions in the extension application](./Documentation/Step7-Configure-BusinessActions/README.md)
 
